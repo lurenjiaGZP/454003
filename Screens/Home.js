@@ -8,18 +8,25 @@ const Home=props=>{
     const [Commentlist,setCommentlist]=useState([]);
   
     const [test1,settest1]=useState(0);
+    const [update,setupdate]=useState(false);
 
 
     
     useEffect(()=>{
         
         if(test1===0){
-            let init={id:1,picture:'p1',comment:{tom:'haha',pig:'omg',gzp:'lol'}};
-            let init2={id:2,picture:'p2',comment:{lee:'h1',mark:'2',light:'lol',omg:'lololo'}};
+            let init={id:1,picture:'p1',comment:['tom:haha','pig:omg','gzp:lol']};
+            let init2={id:2,picture:'p2',comment:['lee:h1','mark:2','light:lol','omg:lololo']};
             setCommentlist(oldarray=>[...oldarray,init]);
             setCommentlist(oldarray=>[...oldarray,init2]);
             settest1(1);
         }
+        //setupdate(props.route.params.updatecomment)
+    if(update)
+    {
+        setCommentlist(oldarray=>[...oldarray,props.route.params.getnewcomment]);
+        setupdate(false)
+    }
                          
         //console.log(Commentlist);
     
